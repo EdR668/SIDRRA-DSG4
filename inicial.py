@@ -6,14 +6,11 @@ from re import M
 from tkinter import *
 from tkinter import font
 from turtle import bgcolor, left, width
-import PIL.Image
-import PIL.ImageTk
 from Comida import *
 from Lacteos import *
 from VerdurasYFtutas import *
 from receta import *
-from funcionesN import *
-from funcionesGui import *
+from Model.funcionesGui import prepareElementsforboxIngredientes, sayElementsSelectedIngrediente, showBestRecipes, mostrarDescripcionIngredientes, mostrarDescripcionRecetasIngredientes, arreglaString, prepareElementsforboxRecetas, mostrarDescripcionRecetas, sayElementsSelectedReceta
 
 inicio =Tk()
 def menu5():
@@ -50,17 +47,17 @@ def menu5():
     label5=Label(frame3,text=arreglaString(string4,90),font=("Little Comet Bubling Demo Version",12),bg="white",justify="left")
     label5.place(x=20,y=330)
     
-    back=PhotoImage(file='botonVolver.png')
+    back=PhotoImage(file='Images\\Botones\\botonVolver.png')
     buttonB=Button(frame3,command=returnmenu4,image=back,borderwidth=0)
     buttonB.image=back
     buttonB.place(x=480,y=25)
         
-    top1=PhotoImage(file="top1.png")
+    top1=PhotoImage(file="Images\\Otras\\top1.png")
     top1_label=Label(image=top1)
     top1_label.image=top1
     top1_label.place(x=0,y=-15)
         
-    under1=PhotoImage(file="under1.png")
+    under1=PhotoImage(file="Images\\Otras\\under1.png")
     under1_label=Label(image=under1)
     under1_label.image=under1
     under1_label.place(x=0,y=670)
@@ -94,7 +91,7 @@ def menu4():
         canva1.place(x=0,y=70)
         canva1.create_window((0,0),window=frame4,anchor="nw")
         
-        image1=PhotoImage(file="dietasana.png")
+        image1=PhotoImage(file="Images\\Otras\\dietasana.png")
         image1_label=Label(frame4,image=image1)
         image1_label.image=image1
         image1_label.grid(column=0,row=0)
@@ -102,7 +99,7 @@ def menu4():
         label2=Label(frame4,font=("Little Comet Bubling Demo Version",11),bg="white",text="Para llevar una dieta y una vida saludable no \nes necesario ser excesivos ni extremistas ,\nbasta mayormente con ciertos habitos \ny practicas muy basicas",justify="left")
         label2.grid(column=1,row=0)
         
-        image2=PhotoImage(file="piramide.png")
+        image2=PhotoImage(file="Images\\Otras\\piramide.png")
         image2_label=Label(frame4,image=image2)
         image2_label.image=image2
         image2_label.grid(column=1,row=1)
@@ -111,7 +108,7 @@ def menu4():
         label3=Label(frame4,font=("Little Comet Bubling Demo Version",11),bg="white",text=arreglaString(string2,45),justify="left")
         label3.grid(column=0,row=1)
         
-        image3=PhotoImage(file="porciones.png")
+        image3=PhotoImage(file="Images\\Otras\\porciones.png")
         image3_label=Label(frame4,image=image3)
         image3_label.image=image3
         image3_label.grid(column=0,row=2)
@@ -120,7 +117,7 @@ def menu4():
         label4=Label(frame4,font=("Little Comet Bubling Demo Version",11),bg="white",text=arreglaString(string3,40),justify="left")
         label4.grid(column=1,row=2)
         
-        image4=PhotoImage(file="cuantaAgua.png")
+        image4=PhotoImage(file="Images\\Otras\\cuantaAgua.png")
         image4_label=Label(frame4,image=image4)
         image4_label.image=image4
         image4_label.grid(column=1,row=3)
@@ -129,7 +126,7 @@ def menu4():
         label5=Label(frame4,font=("Little Comet Bubling Demo Version",11),bg="white",text=arreglaString(string4,40),justify="left")
         label5.grid(column=0,row=3)
         
-        image5=PhotoImage(file="ejercicio.png")
+        image5=PhotoImage(file="Images\\Otras\\ejercicio.png")
         image5_label=Label(frame4,image=image5)
         image5_label.image=image5
         image5_label.grid(column=0,row=4)
@@ -148,17 +145,17 @@ def menu4():
         label1=Label(frame3,text="Piramide Alimenticia",font=("Little Comet Bubling Demo Version",28),bg="white",justify="left")
         label1.place(x=20,y=20)    
         
-        back=PhotoImage(file='botonVolver.png')
+        back=PhotoImage(file='Images\\Botones\\botonVolver.png')
         buttonB=Button(frame3,command=returnmenu4,image=back,borderwidth=0)
         buttonB.image=back
         buttonB.place(x=480,y=25)
         
-        top1=PhotoImage(file="top1.png")
+        top1=PhotoImage(file="Images\\Otras\\top1.png")
         top1_label=Label(image=top1)
         top1_label.image=top1
         top1_label.place(x=0,y=-15)
         
-        under1=PhotoImage(file="under1.png")
+        under1=PhotoImage(file="Images\\Otras\\under1.png")
         under1_label=Label(image=under1)
         under1_label.image=under1
         under1_label.place(x=0,y=670)
@@ -232,7 +229,7 @@ def menu4():
             print(float1)
             label4.config(text=string2)
         
-        firtsbutton=PhotoImage(file='boton1Menu2.png')
+        firtsbutton=PhotoImage(file='Images\\Botones\\boton1Menu2.png')
         button1=Button(frame3,image=firtsbutton,command=selectall,borderwidth=0)
         button1.image=firtsbutton
         button1.place(x=20,y=580)
@@ -242,7 +239,7 @@ def menu4():
        
         
         
-        image1=PhotoImage(file="preguntacalorias.png")
+        image1=PhotoImage(file="Images\\Otras\\preguntacalorias.png")
         image1_label=Label(frame3,image=image1)
         image1_label.image=image1
         image1_label.place(x=20,y=80)
@@ -250,17 +247,17 @@ def menu4():
         def returnmenu4():
             menu4()
         
-        back=PhotoImage(file='botonVolver.png')
+        back=PhotoImage(file='Images\\Botones\\botonVolver.png')
         buttonB=Button(frame3,command=returnmenu4,image=back,borderwidth=0)
         buttonB.image=back
         buttonB.place(x=480,y=25)
         
-        top1=PhotoImage(file="top1.png")
+        top1=PhotoImage(file="Images\\Otras\\top1.png")
         top1_label=Label(image=top1)
         top1_label.image=top1
         top1_label.place(x=0,y=-15)
         
-        under1=PhotoImage(file="under1.png")
+        under1=PhotoImage(file="Images\\Otras\\under1.png")
         under1_label=Label(image=under1)
         under1_label.image=under1
         under1_label.place(x=0,y=670)
@@ -290,42 +287,42 @@ def menu4():
         label2=Label(frame4,font=("Little Comet Bubling Demo Version",11),bg="white",text="Acontinuacion se mostraran los mejores tips o maneras para reutilizar la comida",justify="left")
         label2.grid(column=1,row=0)
         
-        food1=PhotoImage(file="reducion1.png")
+        food1=PhotoImage(file="Images\\Otras\\reducion1.png")
         food1_label=Label(frame4,image=food1)
         food1_label.image=food1
         food1_label.grid(column=1,row=1)
         
-        food2=PhotoImage(file="reducion2.png")
+        food2=PhotoImage(file="Images\\Otras\\reducion2.png")
         food2_label=Label(frame4,image=food2)
         food2_label.image=food2
         food2_label.grid(column=1,row=2)
         
-        food3=PhotoImage(file="reducion3.png")
+        food3=PhotoImage(file="Images\\Otras\\reducion3.png")
         food3_label=Label(frame4,image=food3)
         food3_label.image=food3
         food3_label.grid(column=1,row=3)
         
-        food4=PhotoImage(file="reducion4.png")
+        food4=PhotoImage(file="Images\\Otras\\reducion4.png")
         food4_label=Label(frame4,image=food4)
         food4_label.image=food4
         food4_label.grid(column=1,row=4)
         
-        food5=PhotoImage(file="reducion5.png")
+        food5=PhotoImage(file="Images\\Otras\\reducion5.png")
         food5_label=Label(frame4,image=food5)
         food5_label.image=food5
         food5_label.grid(column=1,row=5)
         
-        food6=PhotoImage(file="reducion6.png")
+        food6=PhotoImage(file="Images\\Otras\\reducion6.png")
         food6_label=Label(frame4,image=food6)
         food6_label.image=food6
         food6_label.grid(column=1,row=6)
         
-        food7=PhotoImage(file="reducion7.png")
+        food7=PhotoImage(file="Images\\Otras\\reducion7.png")
         food7_label=Label(frame4,image=food7)
         food7_label.image=food7
         food7_label.grid(column=1,row=7)
         
-        food8=PhotoImage(file="reducion8.png")
+        food8=PhotoImage(file="Images\\Otras\\reducion8.png")
         food8_label=Label(frame4,image=food8)
         food8_label.image=food8
         food8_label.grid(column=1,row=8)
@@ -340,59 +337,59 @@ def menu4():
         label1=Label(frame3,text="Reutilizacion de residuos",font=("Little Comet Bubling Demo Version",28),bg="white",justify="left")
         label1.place(x=20,y=20)    
         
-        back=PhotoImage(file='botonVolver.png')
+        back=PhotoImage(file='Images\\Botones\\botonVolver.png')
         buttonB=Button(frame3,command=returnmenu4,image=back,borderwidth=0)
         buttonB.image=back
         buttonB.place(x=480,y=25)
         
-        top1=PhotoImage(file="top1.png")
+        top1=PhotoImage(file="Images\\Otras\\top1.png")
         top1_label=Label(image=top1)
         top1_label.image=top1
         top1_label.place(x=0,y=-15)
         
-        under1=PhotoImage(file="under1.png")
+        under1=PhotoImage(file="Images\\Otras\\under1.png")
         under1_label=Label(image=under1)
         under1_label.image=under1
         under1_label.place(x=0,y=670)
     
     def returnmenu1():
         menu1()
-    back=PhotoImage(file='botonVolver.png')
+    back=PhotoImage(file='Images\\Botones\\botonVolver.png')
     button6=Button(frame2,command=returnmenu1,image=back,borderwidth=0)
     button6.image=back
     button6.place(x=480,y=25)
     
-    cat1=PhotoImage(file="elegirOpcion.png")
+    cat1=PhotoImage(file="Images\\Otras\\elegirOpcion.png")
     cat1_label=Label(image=cat1)
     cat1_label.image=cat1
     cat1_label.place(x=80,y=220)
     
-    firtsbutton=PhotoImage(file='boton1Menu4.png')
+    firtsbutton=PhotoImage(file='Images\\Botones\\boton1Menu4.png')
     button1=Button(frame2,image=firtsbutton,command=menu4_1,borderwidth=0)
     button1.image=firtsbutton
     button1.place(x=60,y=490)
     
-    secondbutton=PhotoImage(file='boton2Menu4.png')
+    secondbutton=PhotoImage(file='Images\\Botones\\boton2Menu4.png')
     button2=Button(frame2,image=secondbutton,command=menu4_3,borderwidth=0)
     button2.image=secondbutton
     button2.place(x=60,y=570)
     
-    thirdbutton=PhotoImage(file='boton3Menu4.png')
+    thirdbutton=PhotoImage(file='Images\\Botones\\boton3Menu4.png')
     button3=Button(frame2,image=thirdbutton,command=menu4_2,borderwidth=0)
     button3.image=thirdbutton
     button3.place(x=350,y=490)
     
-    fourthbutton=PhotoImage(file='boton4Menu4.png')
+    fourthbutton=PhotoImage(file='Images\\Botones\\boton4Menu4.png')
     button4=Button(inicio,image=fourthbutton,command=menu4_4,borderwidth=0)
     button4.image=fourthbutton
     button4.place(x=350,y=570)
     
-    top1=PhotoImage(file="top1.png")
+    top1=PhotoImage(file="Images\\Otras\\top1.png")
     top1_label=Label(image=top1)
     top1_label.image=top1
     top1_label.place(x=0,y=-15)
     
-    under1=PhotoImage(file="under1.png")
+    under1=PhotoImage(file="Images\\Otras\\under1.png")
     under1_label=Label(image=under1)
     under1_label.image=under1
     under1_label.place(x=0,y=670)
@@ -449,7 +446,7 @@ def menu3():
         
         frame2.update()
         canva1.config(scrollregion=canva1.bbox("all"))
-        top1=PhotoImage(file="top1.png")
+        top1=PhotoImage(file="Images\\Otras\\top1.png")
         top1_label=Label(image=top1)
         top1_label.image=top1
         top1_label.place(x=0,y=-15)
@@ -460,12 +457,12 @@ def menu3():
         label1=Label(frame3,text="Acontinuacion se mostrara la lista de las recetas \ndisponibles con los ingredientes selecionados ",font=("Little Comet Bubling Demo Version",14),bg="white",justify="left")
         label1.place(x=20,y=20)    
         
-        back=PhotoImage(file='botonVolver.png')
+        back=PhotoImage(file='Images\\Botones\\botonVolver.png')
         buttonB=Button(frame3,command=returnmenu3,image=back,borderwidth=0)
         buttonB.image=back
         buttonB.place(x=440,y=20)
         
-        under1=PhotoImage(file="under1.png")
+        under1=PhotoImage(file="Images\\Otras\\under1.png")
         under1_label=Label(image=under1)
         under1_label.image=under1
         under1_label.place(x=0,y=670)
@@ -491,7 +488,7 @@ def menu3():
         
         frame2.update()
         canva1.config(scrollregion=canva1.bbox("all"))
-        top1=PhotoImage(file="top1.png")
+        top1=PhotoImage(file="Images\\Otras\\top1.png")
         top1_label=Label(image=top1)
         top1_label.image=top1
         top1_label.place(x=0,y=-15)
@@ -502,55 +499,55 @@ def menu3():
         label1=Label(frame3,text="Acontinuacion se mostrara los detalles de \nlos ingredientes de las recetas selecionadas",font=("Little Comet Bubling Demo Version",14),bg="white",justify="left")
         label1.place(x=20,y=20)    
         
-        back=PhotoImage(file='botonVolver.png')
+        back=PhotoImage(file='Images\\Botones\\botonVolver.png')
         buttonB=Button(frame3,command=returnmenu3,image=back,borderwidth=0)
         buttonB.image=back
         buttonB.place(x=440,y=20)
         
-        under1=PhotoImage(file="under1.png")
+        under1=PhotoImage(file="Images\\Otras\\under1.png")
         under1_label=Label(image=under1)
         under1_label.image=under1
         under1_label.place(x=0,y=670)    
         
     
-    firtsbutton=PhotoImage(file='boton1Menu2.png')
+    firtsbutton=PhotoImage(file='Images\\Botones\\boton1Menu2.png')
     button1=Button(frame2,image=firtsbutton,command=selectall,borderwidth=0)
     button1.image=firtsbutton
     button1.place(x=50,y=120)
     
-    secondbutton=PhotoImage(file='boton2Menu2.png')
+    secondbutton=PhotoImage(file='Images\\Botones\\boton2Menu2.png')
     button2=Button(frame2,image=secondbutton,command=deleteall,borderwidth=0)
     button2.image=secondbutton
     button2.place(x=50,y=200)
     
-    thirdbutton=PhotoImage(file='boton1Menu3.png')
+    thirdbutton=PhotoImage(file='Images\\Botones\\boton1Menu3.png')
     button3=Button(frame2,image=thirdbutton,command=menu3_1,borderwidth=0)
     button3.image=thirdbutton
     button3.place(x=360,y=490)
     
-    fourthbutton=PhotoImage(file='boton2Menu3.png')
+    fourthbutton=PhotoImage(file='Images\\Botones\\boton2Menu3.png')
     button4=Button(inicio,image=fourthbutton,command=menu3_2,borderwidth=0)
     button4.image=fourthbutton
     button4.place(x=360,y=570)
     
     def returnmenu1():
         menu1()
-    back=PhotoImage(file='botonVolver.png')
+    back=PhotoImage(file='Images\\Botones\\botonVolver.png')
     button6=Button(frame2,command=returnmenu1,image=back,borderwidth=0)
     button6.image=back
     button6.place(x=450,y=20)
     
-    top1=PhotoImage(file="top1.png")
+    top1=PhotoImage(file="Images\\Otras\\top1.png")
     top1_label=Label(image=top1)
     top1_label.image=top1
     top1_label.place(x=0,y=-15)
     
-    cat1=PhotoImage(file="queIngredientes.png")
+    cat1=PhotoImage(file="Images\\Otras\\queIngredientes.png")
     cat1_label=Label(image=cat1)
     cat1_label.image=cat1
     cat1_label.place(x=20,y=450)
     
-    under1=PhotoImage(file="under1.png")
+    under1=PhotoImage(file="Images\\Otras\\under1.png")
     under1_label=Label(image=under1)
     under1_label.image=under1
     under1_label.place(x=0,y=670)
@@ -609,7 +606,7 @@ def menu2():
         
         frame2.update()
         canva1.config(scrollregion=canva1.bbox("all"))
-        top1=PhotoImage(file="top1.png")
+        top1=PhotoImage(file="Images\\Otras\\top1.png")
         top1_label=Label(image=top1)
         top1_label.image=top1
         top1_label.place(x=0,y=-15)
@@ -620,12 +617,12 @@ def menu2():
         label1=Label(frame3,text="Acontinuacion se mostrara la lista de las recetas \ndisponibles con los ingredientes selecionados ",font=("Little Comet Bubling Demo Version",14),bg="white",justify="left")
         label1.place(x=20,y=20)    
         
-        back=PhotoImage(file='botonVolver.png')
+        back=PhotoImage(file='Images\\Botones\\botonVolver.png')
         buttonB=Button(frame3,command=returnmenu2,image=back,borderwidth=0)
         buttonB.image=back
         buttonB.place(x=440,y=20)
         
-        under1=PhotoImage(file="under1.png")
+        under1=PhotoImage(file="Images\\Otras\\under1.png")
         under1_label=Label(image=under1)
         under1_label.image=under1
         under1_label.place(x=0,y=670)
@@ -652,7 +649,7 @@ def menu2():
         
         frame2.update()
         canva1.config(scrollregion=canva1.bbox("all"))
-        top1=PhotoImage(file="top1.png")
+        top1=PhotoImage(file="Images\\Otras\\top1.png")
         top1_label=Label(image=top1)
         top1_label.image=top1
         top1_label.place(x=0,y=-15)
@@ -663,54 +660,54 @@ def menu2():
         label1=Label(frame3,text="Acontinuacion se mostrara los detalles de \nlos ingredientes selecionados ",font=("Little Comet Bubling Demo Version",14),bg="white",justify="left")
         label1.place(x=20,y=20)    
         
-        back=PhotoImage(file='botonVolver.png')
+        back=PhotoImage(file='Images\\Botones\\botonVolver.png')
         buttonB=Button(frame3,command=returnmenu2,image=back,borderwidth=0)
         buttonB.image=back
         buttonB.place(x=440,y=20)
         
-        under1=PhotoImage(file="under1.png")
+        under1=PhotoImage(file="Images\\Otras\\under1.png")
         under1_label=Label(image=under1)
         under1_label.image=under1
         under1_label.place(x=0,y=670)    
         
     
-    firtsbutton=PhotoImage(file='boton1Menu2.png')
+    firtsbutton=PhotoImage(file='Images\\Botones\\boton1Menu2.png')
     button1=Button(frame2,image=firtsbutton,command=selectall,borderwidth=0)
     button1.image=firtsbutton
     button1.place(x=400,y=120)
-    secondbutton=PhotoImage(file='boton2Menu2.png')
+    secondbutton=PhotoImage(file='Images\\Botones\\boton2Menu2.png')
     button2=Button(frame2,image=secondbutton,command=deleteall,borderwidth=0)
     button2.image=secondbutton
     button2.place(x=400,y=200)
     
-    thirdbutton=PhotoImage(file='boton3Menu2.png')
+    thirdbutton=PhotoImage(file='Images\\Botones\\boton3Menu2.png')
     button3=Button(frame2,image=thirdbutton,command=menu2_1,borderwidth=0)
     button3.image=thirdbutton
     button3.place(x=360,y=490)
     
-    fourthbutton=PhotoImage(file='boton4Menu2.png')
+    fourthbutton=PhotoImage(file='Images\\Botones\\boton4Menu2.png')
     button4=Button(inicio,image=fourthbutton,command=menu2_2,borderwidth=0)
     button4.image=fourthbutton
     button4.place(x=360,y=570)
     
     def returnmenu1():
         menu1()
-    back=PhotoImage(file='botonVolver.png')
+    back=PhotoImage(file='Images\\Botones\\botonVolver.png')
     button6=Button(frame2,command=returnmenu1,image=back,borderwidth=0)
     button6.image=back
     button6.place(x=450,y=20)
     
-    top1=PhotoImage(file="top1.png")
+    top1=PhotoImage(file="Images\\Otras\\top1.png")
     top1_label=Label(image=top1)
     top1_label.image=top1
     top1_label.place(x=0,y=-15)
     
-    cat1=PhotoImage(file="gatoPregunta1.png")
+    cat1=PhotoImage(file="Images\\Otras\\gatoPregunta1.png")
     cat1_label=Label(image=cat1)
     cat1_label.image=cat1
     cat1_label.place(x=20,y=450)
     
-    under1=PhotoImage(file="under1.png")
+    under1=PhotoImage(file="Images\\Otras\\under1.png")
     under1_label=Label(image=under1)
     under1_label.image=under1
     under1_label.place(x=0,y=670)
@@ -719,36 +716,36 @@ def menu2():
     
 def menu1():
     inicio.geometry("445x690")
-    frame1=Frame(bg="white")
+    frame1=Frame(inicio,bg="white")
     frame1.place(x=0,y=0,width=445,height=690)
     
-    img=PhotoImage(file="Fondo2.png")
+    img=PhotoImage(file="Images\\Fondos\\fondo2.png")
     img_label=Label(image=img)
     img_label.image= img
     img_label.place(x=0,y=-10)
     
     
     
-    firtsbutton=PhotoImage(file='boton1.png')
+    firtsbutton=PhotoImage(file='Images\\Botones\\boton1.png')
     button1=Button(inicio,image=firtsbutton,command=menu2,borderwidth=0)
     button1.image=firtsbutton
     button1.place(x=113,y=305)
     
-    secondbutton=PhotoImage(file='boton2.png')
+    secondbutton=PhotoImage(file='Images\\Botones\\boton2.png')
     button2=Button(inicio,image=secondbutton,command=menu3,borderwidth=0)
     button2.image=secondbutton
     button2.place(x=113,y=402)
     
-    thirdbutton=PhotoImage(file='boton3.png')
+    thirdbutton=PhotoImage(file='Images\\Botones\\boton3.png')
     button3=Button(inicio,image=thirdbutton,command=menu4,borderwidth=0)
     button3.image=thirdbutton
     button3.place(x=113,y=502)
     
-    fourthbutton=PhotoImage(file='boton4.png')
+    fourthbutton=PhotoImage(file='Images\\Botones\\boton4.png')
     button4=Button(inicio,image=fourthbutton,command=menu5,borderwidth=0)
     button4.image=fourthbutton
     button4.place(x=112,y=592)
-    zero=PhotoImage(file="banco3.png")
+    zero=PhotoImage(file="Images\\Fondos\\banco3.png")
     zero_label=Label(image=zero)
     zero_label.image=zero
     zero_label.place(x=320,y=100,width=120,height=120)
