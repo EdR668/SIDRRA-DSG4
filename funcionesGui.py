@@ -4,7 +4,8 @@ from Lacteos import *
 from VerdurasYFtutas import *
 from receta import *
 from funcionesN import *
-
+from EstructurasLineales import pila
+from EstructurasLineales import cola
 def prepareElementsforboxIngredientes():
     ingredientes=organizaIngredientesAlfabetico(todosLosIngredientes())
     listafinal=[]
@@ -20,64 +21,40 @@ def prepareElementsforboxRecetas():
     return listafinal
 
 def sayElementsSelectedIngrediente(lista):
+
     final="Los ingredientes selecionados son : "
-    if len(lista)<=10:
+    if lista.longitud<=10:
         contador=1
-        for i in range (len(lista)):
-            if (i<len(lista)-1):
-                final+=lista[i]+" , "
-            if (i==len(lista)-1):
-                final+=lista[i]
-            if(len(final)>(60*contador)):
-                final+="\n"
-                contador+=1
+        final+=lista.printList()
+
         return final
-    if len(lista)>10:
+    if lista.longitud>10:
         aviso="Solo se pueden elegir hasta 10 ingredientes , por favor elimine unos ingredientes \n"
-        contador=1
-        for i in range (10):
-            if (i<len(lista)-1):
-                final+=lista[i]+" , "
-            if (i==len(lista)-1):
-                final+=lista[i]
-            if(len(final)>(60*contador)):
-                final+="\n"
-                contador+=1
+        final+=printList2()
         return (aviso+"\n"+final)
-    
+
 def sayElementsSelectedReceta(lista):
+
     final="Las recetas selecionados son : "
-    if len(lista)<=10:
-        contador=1
-        for i in range (len(lista)):
-            if (i<len(lista)-1):
-                final+=lista[i]+" , "
-            if (i==len(lista)-1):
-                final+=lista[i]
-            if(len(final)>(60*contador)):
-                final+="\n"
-                contador+=1
+    if lista.longitud<=10:
+        final+=lista.printList()
         return final
-    if len(lista)>10:
+    if lista.longitud>10:
+
         aviso="Solo se pueden elegir hasta 10 recetas , por favor elimine unas recetas \n"
-        contador=1
-        for i in range (10):
-            if (i<len(lista)-1):
-                final+=lista[i]+" , "
-            if (i==len(lista)-1):
-                final+=lista[i]
-            if(len(final)>(60*contador)):
-                final+="\n"
-                contador+=1
+        final+=lista.printList2()
         return (aviso+"\n"+final)
 
 def showBestRecipes(lista):
     lista_aux1=todosLosIngredientes()
     lista_aux2=[]
-    for i in range(len(lista_aux1)):
-        for j in range(len(lista)):
-            if (lista[j])==(lista_aux1[i].getNombre()):
-                lista_aux2.append(lista_aux1[i])
+    for i in range(lista.longitud):
+
+        ingrediente=lista.dequeue()
+
+        for j in range(len(lista_aux1)):
+            if (ingrediente.data)==(lista_aux1[j].getNombre()):
+                lista_aux2.append(lista_aux1[j])
     lista_aux3=buscaReceta(lista_aux2,todasLasRecetas())
     final=""
     contador=1
@@ -95,10 +72,11 @@ def showBestRecipes(lista):
 def mostrarDescripcionIngredientes(lista):
     lista_aux1=todosLosIngredientes()
     lista_aux2=[]
-    for i in range(len(lista_aux1)):
-        for j in range(len(lista)):
-            if (lista[j])==(lista_aux1[i].getNombre()):
-                lista_aux2.append(lista_aux1[i])
+    for i in range(lista.longitud):
+        ingrediente=lista.dequeue()
+        for j in range(len(lista_aux1)):
+            if (ingrediente.data)==(lista_aux1[j].getNombre()):
+                lista_aux2.append(lista_aux1[j])
     final=""
     contador=1
     for i in range(len(lista_aux2)):
@@ -115,10 +93,11 @@ def mostrarDescripcionIngredientes(lista):
 def mostrarDescripcionRecetas(lista):
     lista_aux1=todasLasRecetas()
     lista_aux2=[]
-    for i in range(len(lista_aux1)):
-        for j in range(len(lista)):
-            if (lista[j])==(lista_aux1[i].getNombre()):
-                lista_aux2.append(lista_aux1[i])
+    for i in range(lista.longitud):
+        receta=lista.pop()
+        for j in range(len(lista_aux1)):
+            if (receta.data)==(lista_aux1[j].getNombre()):
+                lista_aux2.append(lista_aux1[j])
     final=""
     contador=1
     for i in range(len(lista_aux2)):
@@ -133,13 +112,15 @@ def mostrarDescripcionRecetas(lista):
     return final
 
 def mostrarDescripcionRecetasIngredientes(lista):
+        
     lista_aux1=todasLasRecetas()
     lista_aux2=[]
     lista_aux3=[]
-    for i in range(len(lista_aux1)):
-        for j in range(len(lista)):
-            if (lista[j])==(lista_aux1[i].getNombre()):
-                lista_aux2.append(lista_aux1[i])
+    for i in range(lista.longitud):
+        receta=lista.pop()
+        for j in range(len(lista_aux1)):
+            if (receta.data)==(lista_aux1[j].getNombre()):
+                lista_aux2.append(lista_aux1[j])
     for i in range(len(lista_aux2)):
         for j in range(len(lista_aux2[i].getIngredientes())):
             if len(lista_aux3)<=1:
@@ -176,4 +157,3 @@ def arreglaString(string1,numero):
             final+="\n"
             contador1+=1
     return final
-            
