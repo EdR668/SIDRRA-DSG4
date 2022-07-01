@@ -1,6 +1,8 @@
 from tkinter import *
 from View.Menu2 import Menu2
 from Model.funcionesGui import showBestRecipes
+from Model.List import list
+
 
 class ControlMenu2_1:
     def __init__(self, model, view, wd, other_control, items_selected):
@@ -12,7 +14,7 @@ class ControlMenu2_1:
 
     def back_to_Menu2(self):
         self.other_control.view = None
-        self.other_control.items_selected = []
+        self.other_control.items_selected = list()
         self.wd.switch_frame(Menu2,self.other_control)
 
     def show_recipes(self):

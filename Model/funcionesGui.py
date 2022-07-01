@@ -4,6 +4,8 @@ from Model.Entidades.Lacteos import *
 from Model.Entidades.VerdurasYFtutas import *
 from Model.Entidades.receta import *
 from Model.funcionesN import *
+from Model.List import list
+from Model.Pila import pila
 
 def prepareElementsforboxIngredientes():
     ingredientes=organizaIngredientesAlfabetico(todosLosIngredientes())
@@ -21,50 +23,50 @@ def prepareElementsforboxRecetas():
 
 def sayElementsSelectedIngrediente(lista):
     final="Los ingredientes selecionados son : "
-    if len(lista)<=10:
+    if lista.longitud()<=10:
         contador=1
-        for i in range (len(lista)):
-            if (i<len(lista)-1):
-                final+=lista[i]+" , "
-            if (i==len(lista)-1):
-                final+=lista[i]
-            if(len(final)>(60*contador)):
+        for i in range (lista.longitud()):
+            if (i<lista.longitud()-1):
+                final+=lista.getByIndex(i).data+" , "
+            if (i==lista.longitud()-1):
+                final+=lista.getByIndex(i).data
+            if(lista.longitud()>(60*contador)):
                 final+="\n"
                 contador+=1
         return final
-    if len(lista)>10:
+    if lista.longitud()>10:
         aviso="Solo se pueden elegir hasta 10 ingredientes , por favor elimine unos ingredientes \n"
         contador=1
         for i in range (10):
-            if (i<len(lista)-1):
-                final+=lista[i]+" , "
-            if (i==len(lista)-1):
-                final+=lista[i]
-            if(len(final)>(60*contador)):
+            if (i<lista.longitud()-1):
+                final+=lista.getByIndex(i).data+" , "
+            if (i==lista.longitud()-1):
+                final+=lista.getByIndex(i).data
+            if(lista.longitud() >(60*contador)):
                 final+="\n"
                 contador+=1
         return (aviso+"\n"+final)
-    
+
 def sayElementsSelectedReceta(lista):
     final="Las recetas selecionados son : "
-    if len(lista)<=10:
+    if lista.longitud()<=10:
         contador=1
-        for i in range (len(lista)):
-            if (i<len(lista)-1):
-                final+=lista[i]+" , "
-            if (i==len(lista)-1):
-                final+=lista[i]
+        for i in range (lista.longitud()):
+            if (i<lista.longitud()-1):
+                final+=lista.getByIndex(i).data+" , "
+            if (i==lista.longitud()-1):
+                final+=lista.getByIndex(i).data
             if(len(final)>(60*contador)):
                 final+="\n"
                 contador+=1
         return final
-    if len(lista)>10:
+    if lista.longitud()>10:
         aviso="Solo se pueden elegir hasta 10 recetas , por favor elimine unas recetas \n"
         contador=1
         for i in range (10):
-            if (i<len(lista)-1):
+            if (i<lista.longitud()-1):
                 final+=lista[i]+" , "
-            if (i==len(lista)-1):
+            if (i==lista.longitud()-1):
                 final+=lista[i]
             if(len(final)>(60*contador)):
                 final+="\n"
@@ -73,11 +75,11 @@ def sayElementsSelectedReceta(lista):
 
 def showBestRecipes(lista):
     lista_aux1=todosLosIngredientes()
-    lista_aux2=[]
+    lista_aux2=pila()
     for i in range(len(lista_aux1)):
-        for j in range(len(lista)):
-            if (lista[j])==(lista_aux1[i].getNombre()):
-                lista_aux2.append(lista_aux1[i])
+        for j in range(lista.longitud()):
+            if (lista.getByIndex(j).data)==(lista_aux1[i].getNombre()):
+                lista_aux2.push(lista_aux1[i])
     lista_aux3=buscaReceta(lista_aux2,todasLasRecetas())
     final=""
     contador=1
@@ -94,19 +96,19 @@ def showBestRecipes(lista):
 
 def mostrarDescripcionIngredientes(lista):
     lista_aux1=todosLosIngredientes()
-    lista_aux2=[]
+    lista_aux2=pila()
     for i in range(len(lista_aux1)):
-        for j in range(len(lista)):
-            if (lista[j])==(lista_aux1[i].getNombre()):
-                lista_aux2.append(lista_aux1[i])
+        for j in range(lista.longitud()):
+            if (lista.getByIndex(j).data)==(lista_aux1[i].getNombre()):
+                lista_aux2.push(lista_aux1[i])
     final=""
     contador=1
-    for i in range(len(lista_aux2)):
+    for i in range(lista_aux2.longitud()):
         if i==0:
             final+=str(i+1)+" )  "
         if i>0:
             final+="\n"+str(i+1)+" )  "
-        final+=lista_aux2[i].toString()
+        final+=lista_aux2.getByIndex(i).data.toString()
         if(len(final)>(80*contador)):
             final+="\n"
             contador+=1
@@ -114,19 +116,19 @@ def mostrarDescripcionIngredientes(lista):
 
 def mostrarDescripcionRecetas(lista):
     lista_aux1=todasLasRecetas()
-    lista_aux2=[]
+    lista_aux2=pila()
     for i in range(len(lista_aux1)):
-        for j in range(len(lista)):
-            if (lista[j])==(lista_aux1[i].getNombre()):
-                lista_aux2.append(lista_aux1[i])
+        for j in range(lista.longitud()):
+            if (lista.getByIndex(j).data)==(lista_aux1[i].getNombre()):
+                lista_aux2.push(lista_aux1[i])
     final=""
     contador=1
-    for i in range(len(lista_aux2)):
+    for i in range(lista_aux2.longitud()):
         if i==0:
             final+=str(i+1)+" )  "
         if i>0:
             final+="\n"+str(i+1)+" )  "
-        final+=lista_aux2[i].toString()
+        final+=lista_aux2.getByIndex(i).data.toString()
         if(len(final)>(80*contador)):
             final+="\n"
             contador+=1
@@ -137,8 +139,8 @@ def mostrarDescripcionRecetasIngredientes(lista):
     lista_aux2=[]
     lista_aux3=[]
     for i in range(len(lista_aux1)):
-        for j in range(len(lista)):
-            if (lista[j])==(lista_aux1[i].getNombre()):
+        for j in range(lista.longitud()):
+            if (lista.getByIndex(j).data)==(lista_aux1[i].getNombre()):
                 lista_aux2.append(lista_aux1[i])
     for i in range(len(lista_aux2)):
         for j in range(len(lista_aux2[i].getIngredientes())):
@@ -176,4 +178,3 @@ def arreglaString(string1,numero):
             final+="\n"
             contador1+=1
     return final
-            

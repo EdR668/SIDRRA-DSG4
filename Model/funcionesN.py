@@ -4,6 +4,8 @@ from Model.Entidades.VerdurasYFtutas import *
 from Model.Entidades.receta import *
 from math import *
 import Model.Instanciaciones as Instanciaciones
+from Model.List import list
+from Model.Pila import pila
 
 def organizaIngredientesAlfabetico(ingredientes):
     lista=ingredientes
@@ -28,8 +30,8 @@ def organizaIngredientesAlfabetico(ingredientes):
                     lista[j+1]=lista[j]
                     lista[j]=auxiliar
                     break
-                contador+=1 
-        n-=1     
+                contador+=1
+        n-=1
     return lista
 
 def buscaReceta(ingredien,recetas):
@@ -37,9 +39,9 @@ def buscaReceta(ingredien,recetas):
     lista_recetas=[]
     for re_aux in range(len(recetas)):
         contador=0
-        for in_aux in range(len(ingredien)):
+        for in_aux in range(ingredien.longitud()):
             for in2_aux in range(len(recetas[re_aux].getIngredientes())):
-                if(ingredien[in_aux].numeroC==recetas[re_aux].ingredientes[in2_aux].numeroC):
+                if(ingredien.getByIndex(in_aux).data.numeroC==recetas[re_aux].ingredientes[in2_aux].numeroC):
                     contador+=1
         lista_usx.append(contador)
     maximo=max(lista_usx)

@@ -5,6 +5,8 @@ from View.Menu2_2 import Menu2_2
 from Controller.ControlMenu2_1 import ControlMenu2_1
 from Controller.ControlMenu2_2 import ControlMenu2_2
 from Model.funcionesGui import prepareElementsforboxIngredientes, sayElementsSelectedIngrediente
+from Model.List import list
+
 
 class ControlMenu2:
     def __init__(self, model, view, wd, other_control):
@@ -12,7 +14,7 @@ class ControlMenu2:
         self.view = view
         self.wd = wd
         self.other_control = other_control
-        self.items_selected =[]
+        self.items_selected = list()
 
     def back_to_Menu1(self):
         self.wd.switch_frame(Menu1,self.other_control)
@@ -29,7 +31,7 @@ class ControlMenu2:
 
     def select_all(self):
         for item in self.view.selecion.curselection():
-            self.items_selected.append(self.view.selecion.get(item))
+            self.items_selected.queue(self.view.selecion.get(item))
         self.view.label1.config(text=(sayElementsSelectedIngrediente(self.items_selected)))
 
     def delete_all(self):

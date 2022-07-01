@@ -5,6 +5,7 @@ from View.Menu3_2 import Menu3_2
 from Controller.ControlMenu3_1 import ControlMenu3_1
 from Controller.ControlMenu3_2 import ControlMenu3_2
 from Model.funcionesGui import prepareElementsforboxRecetas, sayElementsSelectedReceta
+from Model.List import list
 
 class ControlMenu3:
     def __init__(self, model, view, wd, other_control):
@@ -12,7 +13,7 @@ class ControlMenu3:
         self.view = view
         self.wd = wd
         self.other_control = other_control
-        self.items_selected =[]
+        self.items_selected = list()
 
     def fill_recipes(self):
         for item in prepareElementsforboxRecetas():
@@ -20,7 +21,7 @@ class ControlMenu3:
 
     def select_all(self):
         for item in self.view.selecion.curselection():
-            self.items_selected.append(self.view.selecion.get(item))
+            self.items_selected.queue(self.view.selecion.get(item))
         self.view.label1.config(text=(sayElementsSelectedReceta(self.items_selected)))
 
     def delete_all(self):
