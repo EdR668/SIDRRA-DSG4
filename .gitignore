@@ -1,6 +1,7 @@
 # Ignora la carpeta __pycache__
 __pycache__
 */__pycache__
+*/*/__pycache__
 
 # Ingnorar carpeta .vscode
 .vscode
