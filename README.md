@@ -1,6 +1,7 @@
 # Proyecto Sidra  
 ## Estructuras de datos  
 ## 2022 - 1s
+---
 
 ### Integrantes:  
 - Anderson Morales  
