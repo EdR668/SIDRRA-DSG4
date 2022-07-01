@@ -1,10 +1,10 @@
-#                                Proyecto Sidra  
-###                           Estructuras de datos  
-###                                2022 - 1s
+# Proyecto Sidra  
+### Estructuras de datos  
+### 2022 - 1s
 ---
 
 #### Integrantes:  
-- Anderson Morales  
+- Anderson David Morales Chila  
 - Eder Jose Hernadez Buelvas  
 - David Rodriguez
 
