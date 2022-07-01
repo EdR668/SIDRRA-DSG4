@@ -1,4 +1,4 @@
-# Proyecto Sidra  
+# Proyecto Sidrra  
 ### Estructuras de datos  
 ### 2022 - 1s
 ---
