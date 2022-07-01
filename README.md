@@ -1,6 +1,6 @@
-# Proyecto Sidra  
-### Estructuras de datos  
-### 2022 - 1s
+#                                Proyecto Sidra  
+###                           Estructuras de datos  
+###                                2022 - 1s
 ---
 
 #### Integrantes:  
