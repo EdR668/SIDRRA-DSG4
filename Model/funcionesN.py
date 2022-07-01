@@ -1,9 +1,9 @@
-from Comida import *
-from Lacteos import *
-from VerdurasYFtutas import *
-from receta import *
+from Model.Entidades.Comida import *
+from Model.Entidades.Lacteos import *
+from Model.Entidades.VerdurasYFtutas import *
+from Model.Entidades.receta import *
 from math import *
-import Instanciaciones as Instanciaciones
+import Model.Instanciaciones as Instanciaciones
 
 def organizaIngredientesAlfabetico(ingredientes):
     lista=ingredientes

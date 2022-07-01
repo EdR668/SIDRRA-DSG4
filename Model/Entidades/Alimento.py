@@ -1,9 +1,8 @@
-import uuid
 from datetime import datetime
 
 class Alimento:  
-    def __init__(self,cantidad,nombre,tipo,usoComun,caracteristicas,propiedadesNutricionales,imagen):
-        self.id = uuid.uuid1().hex
+    def __init__(self,id,cantidad,nombre,tipo,usoComun,caracteristicas,propiedadesNutricionales,imagen,fechaIngreso):
+        self.id = id
         self.cantidad = cantidad
         self.nombre = nombre
         self.tipo = tipo
@@ -11,7 +10,7 @@ class Alimento:
         self.caracteristicas=caracteristicas
         self.propiedadesNutricionales=propiedadesNutricionales
         self.imagen = imagen
-        self.fechaIngreso = datetime.strptime(str(datetime.today().strftime('%d/%m/%Y')),'%d/%m/%Y')
+        self.fechaIngreso = fechaIngreso
 
     def getId(self):
         return self.id

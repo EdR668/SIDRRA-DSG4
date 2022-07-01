@@ -13,3 +13,13 @@ def save_image(image):
         print("ERORR!!!.")
 
     return name_image
+
+def re_size(image, name_image):
+    image  = cv2.imread(image, cv2.IMREAD_UNCHANGED)
+
+    height = int(image.shape[1]*75/100) 
+    width = int(image.shape[0]*75/100)
+    dsize = (height,width)
+    new_image = cv2.resize(image, dsize)
+    print(new_image.shape[0], new_image.shape[1])
+    cv2.imwrite("Images\\Fondos"+"\\"+name_image, new_image)

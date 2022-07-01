@@ -17,6 +17,9 @@ class Menu1(Frame):
         zero=PhotoImage(file="Images\\Fondos\\banco3.png")
         see = PhotoImage(file='Images\\Botones\\icons8-almuerzo-48.png')
         add = PhotoImage(file='Images\\Botones\\icons8-más-2-matemáticas-30.png')
+        sede = PhotoImage(file='Images\\Botones\\icons8-embajada-50.png')
+        ruta = PhotoImage(file='Images\\Botones\\icons8-mapa-waypoint-50.png')
+        kal= PhotoImage(file='Images\\Botones\\caloria.png')
 
         self.img_label=Label(self,image=img)
         self.img_label.image= img
@@ -47,6 +50,22 @@ class Menu1(Frame):
         self.ingresar_alimentos=Button(self,image=add,borderwidth=0,command=self.go_to_Mostrar_ingreso)
         self.ingresar_alimentos.image = add
         self.ingresar_alimentos.place(x=380,y=580)
+
+        self.ver_sede=Button(self,image=sede,borderwidth=0,command=self.go_to_Mostrar_sedes)
+        self.ver_sede.image = sede
+        self.ver_sede.place(x=30,y=510)
+
+        self.ingresar_sede=Button(self,image=add,borderwidth=0,command=self.go_to_Mostrar_ingreso_sede)
+        self.ingresar_sede.image = add
+        self.ingresar_sede.place(x=40,y=580)
+
+        self.ruta=Button(self,image=ruta,borderwidth=0,command=self.go_to_ruta)
+        self.ruta.image = ruta
+        self.ruta.place(x=30,y=450)
+
+        self.calorias=Button(self,image=kal,command=self.go_to_Menu4_2,borderwidth=0)
+        self.calorias.image=kal
+        self.calorias.place(x=360,y=400)
         
         self.zero_label=Label(self,image=zero, bg="white")
         self.zero_label.image=zero
@@ -75,5 +94,14 @@ class Menu1(Frame):
     def go_to_Mostrar_ingreso(self):
         self.controller.go_to_Mostrar_ingreso()
 
+    def go_to_Mostrar_ingreso_sede(self):
+        self.controller.go_to_Mostrar_ingreso_sede()
 
-        
+    def go_to_Mostrar_sedes(self):
+        self.controller.go_to_Mostrar_sedes()
+    
+    def go_to_ruta(self):
+        self.controller.go_to_ruta()
+
+    def go_to_Menu4_2(self):
+        self.controller.go_to_Menu4_2()

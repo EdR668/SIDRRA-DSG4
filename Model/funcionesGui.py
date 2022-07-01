@@ -1,8 +1,8 @@
-from Comida import *
-from Instanciaciones import *
-from Lacteos import *
-from VerdurasYFtutas import *
-from receta import *
+from Model.Entidades.Comida import *
+from Model.Instanciaciones import *
+from Model.Entidades.Lacteos import *
+from Model.Entidades.VerdurasYFtutas import *
+from Model.Entidades.receta import *
 from Model.funcionesN import *
 
 def prepareElementsforboxIngredientes():

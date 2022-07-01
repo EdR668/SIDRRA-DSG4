@@ -12,7 +12,6 @@ class ControlFichaAlimento:
     def modify_ficha(self):
         img = Image.open("Images\\Image_alimentos\\"+(self.food_stuff.imagen))
         img = ImageTk.PhotoImage(img)
-        # img=PhotoImage(file="Images\\Image_alimentos\\carne_res.jpg")
         self.view.l1.config(text=self.food_stuff.nombre)
         self.view.l2.config(text=str(self.food_stuff.tiempoCaducidad) + " días")
         self.view.image_lab.config(image=img)

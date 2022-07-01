@@ -1,7 +1,12 @@
-Para poder ejecutar el programa tienen que instalar las librerias pymongo y OpenCV.
+## Proyecto Sidra  
+### Estructuras de datos  
+### 2022 - 1s
 
-Esto lo hacen con los siguientes comandos:
-    -> OpenCV: pip install opencv-contrib-python imutils
-    -> pymongo: pip install pymongo
+### Integrantes:  
+- Anderson Morales  
+- Eder Jose Hernadez Buelvas  
+- David Rodriguez
 
-Solo pueden ingresar imagenes .png y .jpg
+Esta es una aplicación de gestión y manejo de alimentos, el cual permite ver recetas  
+con los alimentos que se encuentran dentro de la aplicación. Además permite saber el  
+tiempo de caducidad de cada alimento.

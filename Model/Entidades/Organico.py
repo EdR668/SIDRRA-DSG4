@@ -1,8 +1,8 @@
 from Model.Entidades.Alimento import Alimento
 
 class Organico(Alimento):  
-    def __init__(self,cant,nombre,tipo,usoComun,caracteristicas,propiedadesNutricionales,imagen,tiempoCaducidad):
-        super().__init__(cant,nombre,tipo,usoComun,caracteristicas,propiedadesNutricionales,imagen)
+    def __init__(self,id,cant,nombre,tipo,usoComun,caracteristicas,propiedadesNutricionales,imagen,tiempoCaducidad,fechaIngreso):
+        super().__init__(id,cant,nombre,tipo,usoComun,caracteristicas,propiedadesNutricionales,imagen,fechaIngreso)
         
         self.tiempoCaducidad = tiempoCaducidad
 

@@ -2,11 +2,11 @@ from Model.Entidades.Alimento import Alimento
 from datetime import datetime
 
 class Inorganico(Alimento):  
-    def __init__(self,cant,nombre,tipo,usoComun,caracteristicas,propiedadesNutricionales,imagen,fechaVencimiento):
-        super().__init__(cant,nombre,tipo,usoComun,caracteristicas,propiedadesNutricionales,imagen)
+    def __init__(self,id,cant,nombre,tipo,usoComun,caracteristicas,propiedadesNutricionales,imagen,fechaVencimiento,fechaIngreso):
+        super().__init__(id,cant,nombre,tipo,usoComun,caracteristicas,propiedadesNutricionales,imagen,fechaIngreso)
         
-        self.fechaVencimiento = datetime.strptime(fechaVencimiento,'%d/%m/%Y')
-        self.tiempoCaducidad = (self.fechaVencimiento-self.fechaIngreso).days
+        self.fechaVencimiento = datetime.strptime(datetime.strptime(fechaVencimiento,'%Y-%m-%d').strftime("%d-%m-%Y"),"%d-%m-%Y")
+        self.tiempoCaducidad = int((self.fechaVencimiento-self.fechaIngreso).days)
 
     def getFechaVencimiento(self):
         return self.fechaVencimiento

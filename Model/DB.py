@@ -1,20 +1,21 @@
 import pymongo as mongo
 from Model.Entidades.Organico import Organico
+from Model.Entidades.Inorganico import Inorganico
+from Model.Entidades.Sede import Sede
 
 
 client = mongo.MongoClient("mongodb+srv://Sidrra_DSG4:dsg4@cluster0.waeycp2.mongodb.net/?retryWrites=true&w=majority")
 db = client['Sidrra']
 organicos_colletion = db['Organicos']
 inorganicos_collection = db['Inorganicos']
+sede_collection = db['Sedes']
 
-def insert_alimento(collection, data):
-    return collection.insert_one(create_document(data))
+def insert_document(collection, data):
+    return collection.insert_one(data)
 
-def find_document(collection, condition, organ=True, multiple=False):
+def find_document(collection, condition, multiple=False):
     if multiple:
-        results = collection.find(condition)
-        if organ:
-            return making_object(results)
+        return collection.find(condition)
 
     else:
         return collection.find_one(condition)
@@ -22,7 +23,7 @@ def find_document(collection, condition, organ=True, multiple=False):
 def delete_document(collection, condition):
     collection.delete_many(condition)
 
-def create_document(foodstuff):
+def create_alimento(foodstuff):
     my_food = alimento_document(foodstuff=foodstuff)
 
     if str(type(foodstuff).__name__) == "Organico": 
@@ -33,16 +34,47 @@ def create_document(foodstuff):
         my_food["fechaVencimiento"] =  foodstuff.fechaVencimiento
         return my_food
 
-def making_object(results):
+def find_inorganic(collection, condition, multiple):
+    results = find_document(collection, condition, multiple)
+    inorganic = []
+
+    if multiple:
+        for item in results:
+            new_food = Inorganico(item['_id'],float(item['cantidad']),item['nombre'],item['tipo'],item['usoComun'],item['caracteristicas'],item['propiedadesNutricionales'], item['imagen'], str(item['fechaVencimiento']).split(" ")[0], item['fechaIngreso'])
+            inorganic.append(new_food)
+    else:
+        inorganic.append(results)
+        
+    return inorganic
+
+def find_organic(collection, condition, multiple):
+    results = find_document(collection, condition, multiple)
     organic = []
-    for item in results:
-        new_food = Organico(item['cantidad'],item['nombre'],item['tipo'],item['usoComun'],item['caracteristicas'],item['propiedadesNutricionales'], item['imagen'], item['tiempoCaducidad'])
-        new_food.setId(item['_id'])
-        new_food.setFechaIngreso(item['fechaIngreso'])
-        organic.append(new_food)
+
+    if multiple:
+        for item in results:
+            new_food = Organico(item['_id'],float(item['cantidad']),item['nombre'],item['tipo'],item['usoComun'],item['caracteristicas'],item['propiedadesNutricionales'], item['imagen'], int(item['tiempoCaducidad']), item['fechaIngreso'])
+            organic.append(new_food)
+    else:
+        organic.append(results)
+        
     return organic
 
+def find_sede(collection, condition, multiple):
+    results = find_document(collection, condition, multiple)
+    sede = []
 
+    if multiple:
+        for item in results:
+            new_sede = Sede(item['_id'],item['nombre'],item['ciudad'],item['pais'])
+            new_sede.set_ady_list(item['ady_list'])
+            new_sede.set_inventario(item['inventario'])
+            new_sede.set_coordenadas(item['coordendas'])
+            sede.append(new_sede)
+    else:
+        sede.append(results)
+        
+    return sede
 
 def alimento_document(foodstuff):
     my_food = {}
@@ -58,11 +90,14 @@ def alimento_document(foodstuff):
 
     return my_food
 
+def create_sede(sede):
+    my_sede = {}
+    my_sede['_id'] = sede.id
+    my_sede['ady_list'] = sede.ady_list
+    my_sede['nombre'] = sede.nombre
+    my_sede['ciudad'] = sede.ciudad
+    my_sede['pais'] = sede.pais
+    my_sede['inventario'] = sede.inventario
+    my_sede['coordendas'] = sede.coordendas
 
-
-
-
-
-new_foodstuff = {"id":0, "name": "Papas"}
-# print(insert_alimento(alimentos_colletion, new_foodstuff))
-# print(find_document(alimentos_colletion, {}, True))
+    return my_sede

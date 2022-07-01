@@ -11,7 +11,6 @@ class Menu4(Frame):
         cat1=PhotoImage(file="Images\\Otras\\elegirOpcion.png")
         firtsbutton=PhotoImage(file='Images\\Botones\\boton1Menu4.png')
         secondbutton=PhotoImage(file='Images\\Botones\\boton2Menu4.png')
-        thirdbutton=PhotoImage(file='Images\\Botones\\boton3Menu4.png')
         fourthbutton=PhotoImage(file='Images\\Botones\\boton4Menu4.png')
         top1=PhotoImage(file="Images\\Otras\\top1.png")
         under1=PhotoImage(file="Images\\Otras\\under1.png")
@@ -41,10 +40,6 @@ class Menu4(Frame):
         self.button2.image = secondbutton
         self.button2.place(x=60,y=570)
         
-        self.button3=Button(self,image=thirdbutton,borderwidth=0,command=self.go_to_Menu4_2)
-        self.button3.image = thirdbutton
-        self.button3.place(x=350,y=490)
-        
         self.button4=Button(self,image=fourthbutton,borderwidth=0,command=self.go_to_Menu4_4)
         self.button4.image = fourthbutton
         self.button4.place(x=350,y=570)
@@ -67,9 +62,6 @@ class Menu4(Frame):
 
     def go_to_Menu4_1(self):
         self.controller.go_to_Menu4_1()
-    
-    def go_to_Menu4_2(self):
-        self.controller.go_to_Menu4_2()
 
     def go_to_Menu4_4(self):
         self.controller.go_to_Menu4_4()

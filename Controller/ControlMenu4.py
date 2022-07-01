@@ -20,9 +20,6 @@ class ControlMenu4:
 
     def go_to_Menu4_1(self):
         self.wd.switch_frame(Menu4_1,ControlMenu4_1(None, None,self.wd,self))
-    
-    def go_to_Menu4_2(self):
-        self.wd.switch_frame(Menu4_2,ControlMenu4_2(None, None,self.wd,self))
         
     def go_to_Menu4_4(self):
         self.wd.switch_frame(Menu4_4,ControlMenu4_4(None, None,self.wd,self))
